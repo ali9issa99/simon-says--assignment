@@ -61,3 +61,29 @@ function animateWhenPress(currentColor) {
         document.getElementById(currentColor).classList.remove("pressed");
     }, 100);
 }
+
+function checkAnswer(currentLevel) {
+    if (userClickedPattern[currentLevel] == gamePattern[currentLevel]) {
+        if (userClickedPattern.length == gamePattern.length) {
+            userClickedPattern = [];
+            setTimeout(() => {
+                nextSequence();
+            }, 1000);
+        }
+    } else {
+        var gameOverAudio = new Audio("sounds/wrong.mp3");
+        gameOverAudio.play();
+        document.getElementById("level-title").textContent = "Game Over, Press any key to restart";
+        
+        document.body.classList.add("game-over");
+        
+        setTimeout(() => {
+            document.body.classList.remove("game-over");
+        }, 200);
+
+        gamePattern = [];
+        userClickedPattern = [];
+        level = 0;
+        started = false;
+    }
+}
