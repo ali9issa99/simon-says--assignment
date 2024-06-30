@@ -45,3 +45,19 @@ function sounds(sound){
     audio.play();
 }
 
+document.querySelectorAll(".btn").forEach((button) => {
+    button.addEventListener('click', (e) => {
+        let userChosenColor = e.target.id;
+        userClickedPattern.push(userChosenColor);
+        animateWhenPress(userChosenColor);
+        playSound(userChosenColor);
+        checkAnswer(userClickedPattern.length - 1);
+    });
+});
+
+function animateWhenPress(currentColor) {
+    document.getElementById(currentColor).classList.add("pressed");
+    setTimeout(() => {
+        document.getElementById(currentColor).classList.remove("pressed");
+    }, 100);
+}
