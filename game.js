@@ -23,8 +23,6 @@ function nextSequence(){
     gamePattern.push(randomColor)
     animation();
     
-
-    
 }
 
 function animation(){
@@ -50,7 +48,7 @@ document.querySelectorAll(".btn").forEach((button) => {
         let userChosenColor = e.target.id;
         userClickedPattern.push(userChosenColor);
         animateWhenPress(userChosenColor);
-        playSound(userChosenColor);
+        sounds(userChosenColor);
         checkAnswer(userClickedPattern.length - 1);
     });
 });
